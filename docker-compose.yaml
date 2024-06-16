@@ -1,0 +1,18 @@
+version: '1.0'
+services:
+  devcontainer:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    network_mode: service:app
+    command: sleep infinity
+  app:
+    build: .
+    command: uvicorn main:app --host 127.0.0.1 --port 8088 --reload
+    ports:
+      - 8000:8088
+    volumes:
+      - ../..:/workspaces:cached
+
