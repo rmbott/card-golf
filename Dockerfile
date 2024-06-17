@@ -2,10 +2,14 @@
 FROM python:3.12.4-alpine3.20
 
 # set the working directory
-WORKDIR /wokspaces/card-golf/
+WORKDIR /app
 
 #RUN apk add --no-cache python3 py3-pip
+RUN apk add curl
 RUN curl -sSL https://install.python-poetry.org | python3 -
+COPY ./pyproject.toml /app
+RUN poetry install
+RUN poetry run fastapi dev main
 #RUN export PATH="/root/.local/bin:$PATH"
 
 # # install dependencies
