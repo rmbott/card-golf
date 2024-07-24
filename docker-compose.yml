@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    working_dir: /app
+    entrypoint: ["./entrypoint.sh"]
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+  redis:
+    image: "redis:alpine"

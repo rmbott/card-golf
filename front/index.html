@@ -1,11 +1,20 @@
 <html>
     <h1>header</h1>
-    <p id="demo">paragraph</p>
+    <p><div id="p_name">paragraph</div></p>
     <button id="btn">button</button>
+    <p>footer</p>
 </html>
 <script>
-    document.getElementById("btn").addEventListener("click", displayDate); 
-    function displayDate() {
-        document.getElementById("demo").innerHTML = Date();
-      }
+
+    document.getElementById("btn").addEventListener("click", function() {
+        fetch('/name')
+            .then(response => response.text())
+            .then(data => {
+                let parsedData = JSON.parse(data);
+                document.getElementById("p_name").innerHTML = parsedData;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
 </script>
