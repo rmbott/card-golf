@@ -7,5 +7,3 @@ services:
       - 8000:8000
     volumes:
       - .:/card-golf
-  redis:
-    image: "redis:alpine"
