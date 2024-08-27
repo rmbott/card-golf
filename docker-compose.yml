@@ -1,11 +1,11 @@
 services:
   web:
     build: .
-    working_dir: /app
+    working_dir: /card-golf
     entrypoint: ["./entrypoint.sh"]
     ports:
       - 8000:8000
     volumes:
-      - .:/app
+      - .:/card-golf
   redis:
     image: "redis:alpine"

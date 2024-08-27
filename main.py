@@ -7,14 +7,14 @@ r = redis.Redis(host='redis', port=6379, db=0)
 
 app = FastAPI()
 
-app.mount("/front", StaticFiles(directory="front/", html=True), name="front")
+app.mount("/golf", StaticFiles(directory="golf/", html=True), name="golf")
 
 
-@app.get("/name")
+@app.get("/counter")
 async def hello():
       r.incr('counter')
       return f"{r.get('counter')}"
 
 @app.get('/')
 async def front():
-   return RedirectResponse(url='front')
+   return RedirectResponse(url='golf')

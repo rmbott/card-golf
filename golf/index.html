@@ -1,13 +1,13 @@
 <html>
     <h1>header</h1>
-    <p><div id="p_name">paragraph</div></p>
+    <p><div id="p_name">[Counter Placeholder]</div></p>
     <button id="btn">button</button>
     <p>footer</p>
 </html>
 <script>
 
     document.getElementById("btn").addEventListener("click", function() {
-        fetch('/name')
+        fetch('/counter')
             .then(response => response.text())
             .then(data => {
                 let parsedData = JSON.parse(data);
